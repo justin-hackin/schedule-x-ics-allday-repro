@@ -26,7 +26,7 @@ const todayDay = (new Date()).toISOString().split('T')[0];
 
 function App() {
   const icalendarPlugin = createIcalendarPlugin({
-    data: 
+    data:
       "BEGIN:VCALENDAR\n" +
       "PRODID:-//Google Inc//Google Calendar 70.9054//EN\n" +
       "VERSION:2.0\n" +
@@ -56,12 +56,13 @@ function App() {
       "TRANSP:TRANSPARENT\n" +
       "END:VEVENT\n" +
       "END:VCALENDAR\n"
-    
+
   });
 
   const calendar = useCalendarApp({
     defaultView: viewWeek.name,
     selectedDate: '2024-10-25',
+    dayBoundaries: { start: "09:00", end: "03:00" },
     views: [viewDay, viewWeek, viewMonthGrid, viewMonthAgenda],
     plugins: [createEventsServicePlugin(), icalendarPlugin],
     callbacks: {
